@@ -1,10 +1,13 @@
 import React from "react";
+import { FooterContainer } from "../containers/footer";
+import { HeaderContainer } from "../containers/header";
 
 const Signin = () => {
   return (
-    <div>
-      <p>Hello from the sign in!</p>
-    </div>
+    <>
+      <HeaderContainer>Hello from the sign in!</HeaderContainer>
+      <FooterContainer />
+    </>
   );
 };
 
