@@ -1,6 +1,6 @@
 import { Footer } from "../components";
 
-const FooterContainer = () => {
+export const FooterContainer = () => {
   return (
     <Footer>
       <Footer.Title>Question? Contact us.</Footer.Title>
@@ -41,5 +41,3 @@ const FooterContainer = () => {
     </Footer>
   );
 };
-
-export default FooterContainer;
