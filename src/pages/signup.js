@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { FooterContainer } from "../containers/footer";
-import { HeaderContainer } from "../containers/header";
-import { Form } from "../components";
 import { FirebaseContext } from "../context/firebase";
+import { Form } from "../components";
+import { HeaderContainer } from "../containers/header";
+import { FooterContainer } from "../containers/footer";
 import * as ROUTES from "../constants/routes";
 
-const Signup = () => {
+const SignUp = () => {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
 
@@ -19,7 +19,8 @@ const Signup = () => {
 
   const handleSignup = (event) => {
     event.preventDefault();
-    firebase
+
+    return firebase
       .auth()
       .createUserWithEmailAndPassword(emailAddress, password)
       .then((result) =>
@@ -60,23 +61,27 @@ const Signup = () => {
             />
             <Form.Input
               type="password"
-              placeholder="Password"
               value={password}
+              autoComplete="off"
+              placeholder="Password"
               onChange={({ target }) => setPassword(target.value)}
             />
-            <Form.Submit disabled={isInvalid} type="submit">
+            <Form.Submit
+              disabled={isInvalid}
+              type="submit"
+              data-testid="sign-up"
+            >
               Sign Up
             </Form.Submit>
-
-            <Form.Text>
-              Already a user?{" "}
-              <Form.Link to={ROUTES.SIGN_IN}>Sign in now.</Form.Link>
-            </Form.Text>
-            <Form.TextSmall>
-              This page is protected by Google reCAPTCHA to ensure you're not a
-              bot. Learn more.
-            </Form.TextSmall>
           </Form.Base>
+
+          <Form.Text>
+            Already a user? <Form.Link to="/signin">Sign in now.</Form.Link>
+          </Form.Text>
+          <Form.TextSmall>
+            This page is protected by Google reCAPTCHA to ensure you're not a
+            bot. Learn more.
+          </Form.TextSmall>
         </Form>
       </HeaderContainer>
       <FooterContainer />
@@ -84,4 +89,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;

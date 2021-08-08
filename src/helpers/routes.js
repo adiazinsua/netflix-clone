@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
@@ -18,6 +19,7 @@ export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
             />
           );
         }
+
         return null;
       }}
     />
@@ -43,6 +45,7 @@ export function ProtectedRoute({ user, children, ...rest }) {
             />
           );
         }
+
         return null;
       }}
     />
